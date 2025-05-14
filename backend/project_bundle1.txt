@@ -1,3 +1,8 @@
+=== FILE: .gitignore ===
+node_modules
+dist
+
+
 === FILE: bundle_copy.py ===
 #!/usr/bin/env python3
 import os
@@ -2219,6 +2224,11 @@ CMD ["npm", "start"]
 }
 
 === FILE: project_bundle1.txt ===
+=== FILE: .gitignore ===
+node_modules
+dist
+
+
 === FILE: bundle_copy.py ===
 #!/usr/bin/env python3
 import os
@@ -4888,6 +4898,7 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
+
 === FILE: src\middleware\auth.ts ===
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
@@ -5247,6 +5258,34 @@ router.delete(
     }
   }
 );
+// here new endpoint - bracha
+router.get(
+  '/:tmdbId',
+  [param('tmdbId').notEmpty().withMessage('TMDB ID is required')],
+  async (req: Request, res: Response) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    const { tmdbId } = req.params;
+    try {
+      const response = await axios.get(`https://api.themoviedb.org/3/movie/${tmdbId}`, {
+        params: {
+          api_key: process.env.TMDB_API_KEY,
+        },
+      });
+      const movie = {
+        tmdbId: response.data.id.toString(),
+        title: response.data.title,
+        releaseYear: response.data.release_date ? response.data.release_date.split('-')[0] : '',
+        poster: response.data.poster_path ? `https://image.tmdb.org/t/p/w500${response.data.poster_path}` : '',
+        imdbRating: response.data.vote_average ? response.data.vote_average.toString() : '',
+      };
+      res.json(movie);
+    } catch (error) {
+      res.status(500).json({ message: 'Error fetching movie details', error: (error as Error).message });
+    }
+  })
 
 export default router;
 

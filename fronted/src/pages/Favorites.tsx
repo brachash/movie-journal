@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { getFavoriteMovies, updateMovie, deleteMovie } from '../services/movies';
 import { type Movie } from '../types/movie';
+import '../styles/favorites.css';
+import '../styles/movie-card.css';
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState<Movie[]>([]);
@@ -20,7 +22,7 @@ const Favorites = () => {
 
   const handleRemoveFavorite = async (id: string) => {
     try {
-      const updatedMovie = await updateMovie(id, { isFavorite: false });
+      await updateMovie(id, { isFavorite: false });
       setFavorites(favorites.filter((movie) => movie._id !== id));
       alert('הסרט הוסר מהמועדפים');
     } catch (err: any) {
@@ -39,36 +41,45 @@ const Favorites = () => {
   };
 
   return (
-    <div className="favorites-container">
-      <h2>המועדפים שלי</h2>
-      {error && <p className="error">{error}</p>}
-      <div className="movies-grid">
-        {favorites.length === 0 && <p>אין סרטים מועדפים להצגה</p>}
-        {favorites.map((movie) => (
-          <div key={movie._id} className="movie-card">
-            {movie.poster && (
-              <img src={movie.poster} alt={movie.title} className="movie-poster" />
-            )}
-            <h3>{movie.title}</h3>
-            <p>שנה: {movie.releaseYear || 'לא זמין'}</p>
-            <p>דירוג IMDb: {movie.imdbRating || 'לא זמין'}</p>
-            <p>סטטוס: {movie.status === 'WANT_TO_WATCH' ? 'רוצה לצפות' : 'נצפה'}</p>
-            {movie.rating && <p>דירוג שלי: {movie.rating}/10</p>}
-            {movie.comments && <p>הערות: {movie.comments}</p>}
-            <button
-              className="remove-favorite-button"
-              onClick={() => handleRemoveFavorite(movie._id!)}
-            >
-              הסר ממועדפים
-            </button>
-            <button
-              className="delete-button"
-              onClick={() => handleDelete(movie._id!)}
-            >
-              מחק
-            </button>
-          </div>
-        ))}
+    <div className="favorites-page">
+      <div className="favorites-container">
+        <h2>המועדפים שלי</h2>
+        {error && <p className="error">{error}</p>}
+        <div className="netflix-movies-grid">
+          {favorites.length === 0 && <p className="no-movies">אין סרטים מועדפים להצגה</p>}
+          {favorites.map((movie) => (
+            <div key={movie._id} className="netflix-movie-card">
+              {movie.poster ? (
+                <img src={movie.poster} alt={movie.title} className="netflix-movie-poster" />
+              ) : (
+                <div className="netflix-movie-poster"></div>
+              )}
+              <div className="netflix-movie-info">
+                <h3>{movie.title}</h3>
+                <p>שנה: {movie.releaseYear || 'לא זמין'}</p>
+                <p>דירוג IMDb: {movie.imdbRating || 'לא זמין'}</p>
+                <p>סטטוס: {movie.status === 'WANT_TO_WATCH' ? 'רוצה לצפות' : 'נצפה'}</p>
+                {movie.rating && <p>דירוג שלי: {movie.rating}/10</p>}
+                {movie.comments && <p>הערות: {movie.comments}</p>}
+                <div className="form-group favorite-group">
+                  <button
+                    className="netflix-favorite-button active"
+                    onClick={() => handleRemoveFavorite(movie._id!)}
+                    title="הסר ממועדפים"
+                  >
+                    <span className="star-icon">★</span>
+                  </button>
+                </div>
+                <button
+                  className="netflix-delete-button"
+                  onClick={() => handleDelete(movie._id!)}
+                >
+                  מחק
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

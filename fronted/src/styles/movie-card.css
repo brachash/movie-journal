@@ -1,0 +1,171 @@
+/* Shared styles for movie card */
+.netflix-movie-card {
+  background-color: var(--netflix-dark-gray);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.netflix-movie-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.netflix-movie-poster {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 4px 4px 0 0;
+}
+
+.netflix-movie-card:not(:has(.netflix-movie-poster)) .netflix-movie-info {
+  padding-top: 20px;
+}
+
+.netflix-movie-info {
+  padding: 12px;
+  text-align: right;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.netflix-movie-info h3 {
+  font-size: 1em;
+  margin-bottom: 6px;
+  color: var(--netflix-white);
+}
+
+.netflix-movie-info p {
+  font-size: 0.8em;
+  color: var(--netflix-light-gray);
+  margin-bottom: 6px;
+}
+
+.form-group.favorite-group {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.netflix-favorite-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--netflix-dark-gray);
+  border: none;
+  border-radius: 50%;
+  color: var(--netflix-light-gray);
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s, color 0.2s;
+}
+
+.netflix-favorite-button.active {
+  background-color: var(--netflix-red);
+  color: var(--netflix-white);
+}
+
+.netflix-favorite-button:hover {
+  background-color: #f40612;
+  transform: scale(1.1);
+  color: var(--netflix-white);
+}
+
+.netflix-favorite-button .star-icon {
+  display: inline-block;
+}
+
+.netflix-favorite-button .plus-icon {
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 2px;
+}
+
+.netflix-favorite-button.active .plus-icon {
+  display: none;
+}
+
+.netflix-delete-button {
+  display: inline-block;
+  width: 100%;
+  padding: 8px;
+  background-color: var(--netflix-red);
+  color: var(--netflix-white);
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  margin-top: auto;
+}
+
+.netflix-delete-button:hover {
+  background-color: #f40612;
+  transform: scale(1.01);
+}
+
+/* Responsive design for movie card */
+@media (max-width: 768px) {
+  .netflix-movie-poster {
+    height: 225px;
+  }
+
+  .netflix-movie-info h3 {
+    font-size: 0.9em;
+  }
+
+  .netflix-movie-info p {
+    font-size: 0.7em;
+  }
+
+  .netflix-delete-button {
+    font-size: 0.7em;
+    padding: 6px;
+  }
+
+  .netflix-favorite-button {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .netflix-favorite-button .plus-icon {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .netflix-movie-poster {
+    height: 180px;
+  }
+
+  .netflix-movie-info h3 {
+    font-size: 0.8em;
+  }
+
+  .netflix-movie-info p {
+    font-size: 0.65em;
+  }
+
+  .netflix-delete-button {
+    font-size: 0.65em;
+    padding: 5px;
+  }
+
+  .netflix-favorite-button {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .netflix-favorite-button .plus-icon {
+    font-size: 12px;
+  }
+}

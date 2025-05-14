@@ -1,11 +1,33 @@
+import {type ReactNode, useEffect } from 'react';
 import Navbar from './Navbar';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 
-const Layout = () => {
+interface LayoutProps {
+  children?: ReactNode;
+}
+
+const Layout = ({ children }: LayoutProps) => {
+  const location = useLocation();
+  const isAuthPage = location.pathname === '/login' || location.pathname === '/signup';
+  
+  // מעבר לראש העמוד בכל החלפת דף
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
-    <div>
+    <div className={`app-container ${isAuthPage ? 'auth-page' : 'content-page'}`}>
       <Navbar />
-      <Outlet />
+      <main className="main-content">
+        {children || <Outlet />}
+      </main>
+      {!isAuthPage && (
+        <footer className="app-footer">
+          <div className="footer-content">
+            <p>יומן סרטים © {new Date().getFullYear()}</p>
+          </div>
+        </footer>
+      )}
     </div>
   );
 };

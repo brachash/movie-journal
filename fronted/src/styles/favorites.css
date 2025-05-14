@@ -1,0 +1,80 @@
+/* Styles for favorites page */
+.favorites-page {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+    url("https://assets.nflxext.com/ffe/siteui/vlv3/00103100-5b45-4d4f-af32-342649f1bda5/64774cd8-5c3a-4823-a0bb-1610d6971bd4/IL-he-20230821-popsignuptwoweeks-perspective_alpha_website_small.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 80px 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.favorites-container {
+  width: 100%;
+  max-width: 1200px;
+  background-color: var(--netflix-overlay);
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.favorites-container h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  color: var(--netflix-white);
+}
+
+.error,
+.no-movies {
+  font-size: 16px;
+  color: var(--netflix-red);
+  text-align: center;
+  margin: 20px 0;
+}
+
+.netflix-movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+/* Responsive design for favorites page */
+@media (max-width: 768px) {
+  .favorites-container {
+    padding: 30px 20px;
+    max-width: 90%;
+  }
+
+  .netflix-movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .netflix-movie-card {
+    height: 550px;
+  }
+}
+
+@media (max-width: 600px) {
+  .favorites-container {
+    padding: 20px 15px;
+  }
+
+  .favorites-container h2 {
+    font-size: 24px;
+  }
+
+  .netflix-movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+
+  .netflix-movie-card {
+    height: 500px;
+  }
+}
