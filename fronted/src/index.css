@@ -1,0 +1,409 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: right;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  height: 80px;
+  resize: vertical;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  color: red;
+  margin-bottom: 15px;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Search Page Styles */
+.search-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.search-container h2 {
+  margin-bottom: 20px;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 300px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  margin-right: -1px;
+}
+
+.search-form button {
+  width: auto;
+  padding: 8px 16px;
+  border-radius: 0 4px 4px 0;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.movie-card {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.movie-poster {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.movie-card h3 {
+  font-size: 1.1em;
+  margin: 10px 0;
+}
+
+.details-button {
+  width: auto;
+  padding: 8px 16px;
+  font-size: 0.9em;
+}
+
+/* Movie Detail Page Styles */
+.movie-detail-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.movie-detail-container h2 {
+  margin-bottom: 20px;
+}
+
+.movie-detail-content {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.movie-detail-poster {
+  width: 300px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.movie-detail-info {
+  flex: 1;
+  text-align: right;
+}
+
+.movie-detail-info p {
+  margin: 10px 0;
+}
+
+.status-select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.loading {
+  text-align: center;
+  margin: 50px;
+  font-size: 1.2em;
+}
+
+/* My Space Page Styles */
+.my-space-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.my-space-container h2 {
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  width: auto;
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.tabs button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.delete-button {
+  background-color: #dc3545;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+/* Favorites Page Styles */
+.favorites-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.favorites-container h2 {
+  margin-bottom: 20px;
+}
+
+.remove-favorite-button {
+  background-color: #ffc107;
+  margin-bottom: 10px;
+}
+
+.remove-favorite-button:hover {
+  background-color: #e0a800;
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #007bff;
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.navbar-logo {
+  color: white;
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu li {
+  margin-left: 20px;
+}
+
+.navbar-menu a {
+  color: white;
+  font-size: 1em;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.navbar-menu a:hover,
+.navbar-menu a.active {
+  background-color: #0056b3;
+}
+
+.logout-button {
+  width: auto;
+  padding: 8px 12px;
+  background-color: #dc3545;
+  font-size: 1em;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .login-container {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .search-container,
+  .my-space-container,
+  .favorites-container {
+    margin: 10px;
+    padding: 15px;
+  }
+
+  .search-input {
+    width: 100%;
+    border-radius: 4px;
+  }
+
+  .search-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-form button {
+    margin-top: 10px;
+    border-radius: 4px;
+  }
+
+  .movie-detail-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .movie-detail-poster {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+  }
+
+  .movie-detail-info {
+    text-align: center;
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+
+  .tabs button {
+    margin: 5px 0;
+  }
+
+  /* Navbar Responsive */
+  .navbar-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: #007bff;
+    padding: 10px 0;
+  }
+
+  .navbar-menu.open {
+    display: flex;
+  }
+
+  .navbar-menu li {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .navbar-menu a,
+  .logout-button {
+    width: 100%;
+    display: block;
+    padding: 10px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
